@@ -152,14 +152,29 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		// special case : delete root node
 		// root has no parent, and thus is handled as a special case
 		if (this.root != null && this.root.getData().equals(data)) {
-			NodeWithParent<T> ipwp = getInOrderPredecessorWithParent(this.root);
-			if (ipwp != null) {
-				this.root.setData(ipwp.node.getData());
-				remove(ipwp.node, ipwp.parent);
+			// CASE I: root has no children
+			if (this.root.getLeft() == null && this.root.getRight() == null) {
+				this.root = null;
 				return true;
-			} else {
-				return false;
 			}
+			// CASE II: root has 1 child
+			else if ((this.root.getLeft() != null && this.root.getRight() == null)
+					|| (this.root.getRight() != null && this.root.getLeft() == null)) {
+				this.root = this.root.getLeft() != null ? this.root.getLeft() : this.root.getRight();
+				return true;
+			}
+			// CASE III: root has 2 children
+			else {
+				NodeWithParent<T> ipwp = getInOrderPredecessorWithParent(this.root);
+				if (ipwp != null) {
+					this.root.setData(ipwp.node.getData());
+					remove(ipwp.node, ipwp.parent);
+					return true;
+				} else {
+					return false;
+				}
+			}
+
 		}
 
 		NodeWithParent<T> nwp = getMatchingNodeWithParent(data, this.root);
