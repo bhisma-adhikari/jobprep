@@ -25,25 +25,25 @@ public class PriorityQueue<T extends Comparable<T>> {
 	}
 
 
-	public void insert(T data) {
-		if (this.root == null) {
-			this.root = new TreeNode<T>(data, null, null); 
-			return; 
-		}
-		 
-		this.root.insert(data);
-	}
-	
-
-	public boolean contains(T data) {
-		return this.root.contains(data);
-	}
+//	public void insert(T data) {
+//		if (this.root == null) {
+//			this.root = new TreeNode<T>(data, null, null); 
+//			return; 
+//		}
+//		 
+//		this.root.insert(data);
+//	}
+//	
+//
+//	public boolean contains(T data) {
+//		return this.root.contains(data);
+//	}
 
 	// removes the first occurrence (nearest to the root) of an element, if such element exists
 	// returns true if an element is successfully removed, else false 
-	public boolean remove(T data) {
-		
-	}
+//	public boolean remove(T data) {
+//		
+//	}
 //	
 //	// removes and returns the root element's data 
 //	public T poll() {
