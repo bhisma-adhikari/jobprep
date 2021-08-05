@@ -2,27 +2,31 @@ package main;
 
 import utils.Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class Test {
     public static void main(String[] args) {
-        String s1 = "bat";
-        String s2 = "tab";
+        int[][] board = new int[9][9];
+        board[0] = new int[]{0, 2, 3, 4, 5, 6, 7, 8, 9};
+        board[1] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[2] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[3] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[4] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[5] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[6] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[7] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+        board[8] = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        char[] c1 = s1.toCharArray();
-        char[] c2 = s2.toCharArray();
 
-        Arrays.sort(c1);
-        Arrays.sort(c2);
+        int[][] board1 = Arrays.copyOf(board, board.length);
 
-        s1 = new String(c1);
-        s2 = new String(c2);
+         Arrays.stream(board).map(el -> el.clone()).toArray($ -> board.clone());
 
-        System.out.println(s1.equals(s2));
 
+        board[8][8] = 88;
+        Utils.print2dIntArray(board1);
     }
+
 
 }
